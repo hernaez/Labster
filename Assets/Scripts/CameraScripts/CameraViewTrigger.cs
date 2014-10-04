@@ -8,13 +8,9 @@ public class CameraViewTrigger : MonoBehaviour {
 	[SerializeField] Transform cameraLook;
 	[SerializeField] GameObject backButton;
 
-	private Camera cam;
+	[SerializeField] Camera cam;
 	// Use this for initialization
 	void Start () {
-		//we assume there's going to be one camera in the scene.
-		cam = Camera.main;
-		if (null == cam)
-			Debug.LogError("NO CAMERA IN SCENE");
 	}
 
 	void OnMouseDown()
@@ -27,11 +23,17 @@ public class CameraViewTrigger : MonoBehaviour {
 	{
 		cam.transform.position = cameraPosition.position;
 		cam.transform.LookAt(cameraLook.position);
+		this.collider.enabled = false;
 		//not all cameras need to set up the back transition 
 		if (backButton != null)
 			backButton.SetActive(true);
 	}
 
+
+	public void ResetCollider()
+	{
+		this.collider.enabled = true;
+	}
 
 	// Update is called once per frame
 	void Update () {
