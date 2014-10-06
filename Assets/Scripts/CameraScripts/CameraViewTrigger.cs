@@ -7,10 +7,23 @@ public class CameraViewTrigger : MonoBehaviour {
 	[SerializeField] Transform cameraPosition;
 	[SerializeField] Transform cameraLook;
 	[SerializeField] GameObject backButton;
+	[SerializeField] GameObject highlightObject;
 
 	[SerializeField] Camera cam;
 	// Use this for initialization
 	void Start () {
+	}
+
+	void OnMouseEnter()
+	{
+		if (highlightObject != null)
+		highlightObject.SetActive(true);
+	}
+
+	void OnMouseExit()
+	{
+		if (highlightObject != null)
+		highlightObject.SetActive(false);
 	}
 
 	void OnMouseDown()
