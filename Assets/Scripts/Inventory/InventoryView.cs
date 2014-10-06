@@ -6,9 +6,10 @@ public class InventoryView : MonoBehaviour {
 
 	//list of positions to render items in the inventory. gets refreshed by the controller
 	[SerializeField] List<Transform> inventoryPositions;
+
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 
 	//render the new inventory list according to the status
@@ -25,13 +26,12 @@ public class InventoryView : MonoBehaviour {
 			foreach(Transform child in item.transform)
 				child.gameObject.layer = LayerMask.NameToLayer("UI");
 			++i;
+
+			//HACK: All item's should scale to perfectly match the Inventory UI. For that, a size should be 
+			//stablished and the scale proportionally to it. then it would fit perfectly in the UI.  
 			item.transform.localScale *= 0.25f;
 		}
 
 	}
-
-	// Update is called once per frame
-	void Update () {
 	
-	}
 }

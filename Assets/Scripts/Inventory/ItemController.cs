@@ -3,11 +3,8 @@ using System.Collections;
 
 public class ItemController : MonoBehaviour {
 
-
-	bool inInventory = false;
 	ItemModel model;
 
-	//TODO: Needs to load XML parameters itemName/status/position
 	void Start () {
 		//loads the model
 		model = this.GetComponent<ItemModel>();
@@ -19,16 +16,19 @@ public class ItemController : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if (false == inInventory)
+		if (false == model.InInventory)
 			PickUp();
 	}
 
-
+	public string GetItemName()
+	{
+		return model.ItemName;
+	}
 
 	//user clicks on the item and it's loaded in the Inventory
 	void PickUp()
 	{
-		inInventory = true;
+		model.InInventory = true;
 		InventoryController.instance.Pick(this);
 
 	}
